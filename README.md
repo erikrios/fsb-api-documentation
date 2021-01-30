@@ -1821,7 +1821,7 @@
 
 - Request
   - Endpoint  
-    GET <http://localhost:3000/api/praktikum/report?kode-mata-kuliah=MWP53136&id-tahun=11&kd-kelas=53201002082957>
+    GET <http://localhost:3000/api/praktikum/report?kode-mata-kuliah=MWP53136&id-tahun=11>
   - Headers  
     Content-Type: application/json  
     Auth-Token: {GENERATED TOKEN}
