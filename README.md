@@ -1753,11 +1753,12 @@
       "status": "success",
       "data": {
         "nim": 20533396,
-        "kodeMK": "MWP53136",
-        "idThn": 11,
+        "kodeMk": "MWP53136",
+        "namaMk": "Praktikum Peng. Teknologi Informatika",
+        "IdThn": 11,
         "status": "Verified",
-        "tglDaftar": "2021-01-10T13:06:47.000Z",
-        "buktiPembayaran": "practicepayment/2021-01-10T12:39:51.857Z-practicepayment-35bdc8e5ed37fd8d0fda98141a34ff5f-20533396.png"
+        "tglDaftar": "2021-02-03T13:35:19.000Z",
+        "buktiPembayaran": "practicepayment/2021-02-03T06:28:15.219Z-practicepayment-974868e8bbeeba0f29a63cd60a88bc80-20533396.png"
       },
       "message": null
     }
@@ -1779,18 +1780,19 @@
 
     ```json
     {
-      "status": "success",
-      "data": [
-        {
-          "nim": 20533396,
-          "kodeMK": "MWP53136",
-          "idThn": 11,
-          "status": "Verified",
-          "tglDaftar": "2021-01-10T13:06:47.000Z",
-          "buktiPembayaran": "practicepayment/2021-01-10T12:39:51.857Z-practicepayment-35bdc8e5ed37fd8d0fda98141a34ff5f-20533396.png"
-        }
-      ],
-      "message": null
+        "status": "success",
+        "data": [
+          {
+            "nim": 20533396,
+            "kodeMk": "MWP53136",
+            "namaMk": "Praktikum Peng. Teknologi Informatika",
+            "IdThn": 11,
+            "status": "Verified",
+            "tglDaftar": "2021-02-03T13:35:19.000Z",
+            "buktiPembayaran": "practicepayment/2021-02-03T06:28:15.219Z-practicepayment-974868e8bbeeba0f29a63cd60a88bc80-20533396.png"
+          }
+        ],
+        "message": null
     }
     ```  
 
