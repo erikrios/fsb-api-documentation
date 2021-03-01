@@ -23,7 +23,198 @@
         "message": null
     }
     ```
-  
+
+## ----------------------- {BASE_URL}/api/claim -----------------
+
+### Search the student (public)
+
+- Request
+  - Endpoint  
+    GET <http://localhost:3000/api/claim/mahasiswa/20533396>
+  - Headers  
+    Content-Type: application/json  
+
+- Response
+  - Headers  
+    Content-Type: application/json; charset=utf-8
+  - Body
+
+    ```json
+    {
+      "status": "success",
+      "data": {
+        "nim": "20533396",
+        "nama_mhs": "SINDY MAYNANDA MUSLIHAH",
+        "alamat": "DUKUH KAPONAN II RT.1/RW.1",
+        "kode_fakultas": "5",
+        "kode_jurusan": "3",
+        "angkatan": "2020/2021"
+      },
+      "message": null
+    }
+    ```  
+
+### Claim the student data (public)
+
+- Request
+  - Endpoint  
+    POST <http://localhost:3000/api/claim/mahasiswa/20533396>
+  - Headers  
+    Content-Type: multipart/form-data  
+    Content-Dispotion: form-data; name="studentid"; filename="kartu-mahasiswa.png"; password="Erik1997"
+
+- Response
+  - Headers  
+    Content-Type: application/json; charset=utf-8
+  - Body
+
+    ```json
+    {
+      "status": "success",
+      "data": "File submitted successfully.",
+      "message": null
+    }
+
+### Get the student claim info (public)
+
+- Request
+  - Endpoint  
+    GET <http://localhost:3000/api/claim/mahasiswa/20533396/info>
+  - Headers  
+    Content-Type: application/json  
+
+- Response
+  - Headers  
+    Content-Type: application/json; charset=utf-8
+  - Body
+
+    ```json
+    {
+      "status": "success",
+      "data": {
+        "nim": "20533396",
+        "tgl_submit": "2021-01-12T05:44:15.000Z",
+        "status": "Review"
+      },
+      "message": null
+    }
+    ```
+
+### Re-claim the student data / constraint: status rejected (public)
+
+- Request
+  - Endpoint  
+    PUT <http://localhost:3000/api/claim/mahasiswa/20533396>
+  - Headers  
+    Content-Type: multipart/form-data  
+    Content-Dispotion: form-data; name="studentid"; filename="kartu-mahasiswa.png"; password="Erik1997"
+
+- Response
+  - Headers  
+    Content-Type: application/json; charset=utf-8
+  - Body
+
+    ```json
+    {
+      "status": "success",
+      "data": "File submitted successfully.",
+      "message": null
+    }
+
+### Get all student claim info depends on its status, available query = Review, Rejected, Verified (3)
+
+- Request
+  - Endpoint  
+    GET <http://localhost:3000/api/claim/mahasiswa?status=Review&page=1&limit=10>
+  - Headers  
+    Content-Type: application/json
+    Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrb2RlRnAiOiI1MyIsIm5hbWUiOiJUZWtuaWsgSW5mb3JtYXRpa2EiLCJpYXQiOjE2MDgyNjEwNDB9.mXzXjpQvLQj483jJP9qS8CeoJCetGrohKmuCMDiicSM
+
+- Response
+  - Headers  
+    Content-Type: application/json; charset=utf-8
+  - Body
+
+    ```json
+    {
+      "status": "success",
+      "data": {
+        "list" : [
+          {
+            "nim": "20533396",
+            "kartu_mahasiswa": "2021-02-28T02:16:43.867Z-studentid-fa6b2df7bb9cf8376c04ba5aba70d862-20533396.jpeg",
+            "status": "Review",
+            "tgl_submit": "2021-01-12T05:44:15.000Z",
+            "kode_fp": "53"
+          },
+        ],
+        "page_info": {
+          "limit": 10,
+          "page": 1,
+          "page_total": 20,
+          "total": 195
+        }
+      },
+      "message": null
+    }
+    ```
+
+### Get a claim info of particular student (3)
+
+- Request
+  - Endpoint  
+    GET <http://localhost:3000/api/claim/mahasiswa/20533396/moreinfo>
+  - Headers  
+    Content-Type: application/json
+    Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrb2RlRnAiOiI1MyIsIm5hbWUiOiJUZWtuaWsgSW5mb3JtYXRpa2EiLCJpYXQiOjE2MDgyNjEwNDB9.mXzXjpQvLQj483jJP9qS8CeoJCetGrohKmuCMDiicSM
+
+- Response
+  - Headers  
+    Content-Type: application/json; charset=utf-8
+  - Body
+
+    ```json
+    {
+      "status": "success",
+      "data": {
+        "nim": "20533396",
+        "kartu_mahasiswa": "2021-02-28T02:16:43.867Z-studentid-fa6b2df7bb9cf8376c04ba5aba70d862-20533396.jpeg",
+        "status": "Review",
+        "tgl_submit": "2021-01-12T05:44:15.000Z",
+        "kode_fp": "53"
+      },
+      "message": null
+    }
+    ```
+
+### Set the claim status, constraint: status review. If status is "verified", add the claim data into student table (3)
+
+- Request
+  - Endpoint  
+    PUT <http://localhost:3000/api/claim/mahasiswa/20533396/status>
+  - Headers  
+    Content-Type: application/json
+    Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrb2RlRnAiOiI1MyIsIm5hbWUiOiJUZWtuaWsgSW5mb3JtYXRpa2EiLCJpYXQiOjE2MDgyNjEwNDB9.mXzXjpQvLQj483jJP9qS8CeoJCetGrohKmuCMDiicSM
+  - Body
+
+    ```json
+    {
+      "status": "Verified"
+    }
+
+- Response
+  - Headers  
+    Content-Type: application/json; charset=utf-8
+  - Body
+
+    ```json
+    {
+      "status": "success",
+      "data": "Successfully set the status to be Verified.",
+      "message": null
+    }
+    ```
+
 ## ------------------- {BASE_URL}/api/auth -----------------------
 
 ### Authenticate the student (1)
@@ -1741,7 +1932,7 @@
     GET <http://localhost:3000/api/praktikum/register/status?kode-mata-kuliah=MWP53136&id-tahun=11>
   - Headers  
     Content-Type: application/json  
-    Auth-Token: {GENERATED TOKEN} 
+    Auth-Token: {GENERATED TOKEN}
 
 - Response
   - Headers  
